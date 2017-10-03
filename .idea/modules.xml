@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/russian-calendar.iml" filepath="$PROJECT_DIR$/.idea/modules/russian-calendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/russian-calendar_main.iml" filepath="$PROJECT_DIR$/.idea/modules/russian-calendar_main.iml" group="russian-calendar" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/russian-calendar_test.iml" filepath="$PROJECT_DIR$/.idea/modules/russian-calendar_test.iml" group="russian-calendar" />
+    </modules>
+  </component>
+</project>
