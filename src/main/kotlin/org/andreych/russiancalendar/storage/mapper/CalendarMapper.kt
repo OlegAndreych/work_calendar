@@ -9,6 +9,7 @@ import net.fortuna.ical4j.model.property.Version
 import org.andreych.russiancalendar.datasource.model.Day
 import org.andreych.russiancalendar.datasource.model.YearData
 import org.springframework.stereotype.Service
+import java.util.Calendar.*
 
 /**
  * Преобразует данные о производственном календаре из портала открытых данных в iCalendar.
@@ -16,6 +17,11 @@ import org.springframework.stereotype.Service
 @Service
 class CalendarMapper(private val eventMapper: EventMapper) {
 
+    /**
+     * Преобразует данные о производственном календаре из портала открытых данных в iCalendar.
+     *
+     * @param calendarData данные календаря с портала.
+     */
     fun map(calendarData: List<YearData>): Calendar {
         val calendar = Calendar()
 
@@ -29,18 +35,18 @@ class CalendarMapper(private val eventMapper: EventMapper) {
         for (datum in calendarData) {
             val year = datum.year
 
-            datum.jan.addToCalendar(year, java.util.Calendar.JANUARY, components)
-            datum.feb.addToCalendar(year, java.util.Calendar.FEBRUARY, components)
-            datum.mar.addToCalendar(year, java.util.Calendar.MARCH, components)
-            datum.apr.addToCalendar(year, java.util.Calendar.APRIL, components)
-            datum.may.addToCalendar(year, java.util.Calendar.MAY, components)
-            datum.jun.addToCalendar(year, java.util.Calendar.JUNE, components)
-            datum.jul.addToCalendar(year, java.util.Calendar.JULY, components)
-            datum.aug.addToCalendar(year, java.util.Calendar.AUGUST, components)
-            datum.sep.addToCalendar(year, java.util.Calendar.SEPTEMBER, components)
-            datum.oct.addToCalendar(year, java.util.Calendar.OCTOBER, components)
-            datum.nov.addToCalendar(year, java.util.Calendar.NOVEMBER, components)
-            datum.dec.addToCalendar(year, java.util.Calendar.DECEMBER, components)
+            datum.jan.addToCalendar(year, JANUARY, components)
+            datum.feb.addToCalendar(year, FEBRUARY, components)
+            datum.mar.addToCalendar(year, MARCH, components)
+            datum.apr.addToCalendar(year, APRIL, components)
+            datum.may.addToCalendar(year, MAY, components)
+            datum.jun.addToCalendar(year, JUNE, components)
+            datum.jul.addToCalendar(year, JULY, components)
+            datum.aug.addToCalendar(year, AUGUST, components)
+            datum.sep.addToCalendar(year, SEPTEMBER, components)
+            datum.oct.addToCalendar(year, OCTOBER, components)
+            datum.nov.addToCalendar(year, NOVEMBER, components)
+            datum.dec.addToCalendar(year, DECEMBER, components)
         }
 
         return calendar

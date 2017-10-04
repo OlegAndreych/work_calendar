@@ -26,7 +26,7 @@ class CommaSeparatedListConverter private constructor() : StdConverter<String, L
             val date = token.removeSuffix("*").toInt()
             Day(date, HolidayType.SHORT)
         } else {
-            Day(token.toInt(), HolidayType.HOLIDAY)
+            Day(token.toInt(), HolidayType.DAY_OFF)
         }
     }
 }

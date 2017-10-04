@@ -20,9 +20,9 @@ data class YearData(@JsonProperty("Год/Месяц") val year: Int,
                     @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Декабрь") val dec: List<Day>
 )
 
-data class Day(val date: Int, val holidayType: HolidayType = HolidayType.HOLIDAY)
+data class Day(val date: Int, val holidayType: HolidayType = HolidayType.DAY_OFF)
 
 enum class HolidayType(val description: String) {
     SHORT("Short day"),
-    HOLIDAY("Day off");
+    DAY_OFF("Day off");
 }

@@ -3,7 +3,7 @@ package org.andreych.russiancalendar.utils
 import org.andreych.russiancalendar.datasource.model.CommaSeparatedListConverter
 import org.andreych.russiancalendar.datasource.model.Day
 import org.andreych.russiancalendar.datasource.model.HolidayType
-import org.andreych.russiancalendar.datasource.model.HolidayType.HOLIDAY
+import org.andreych.russiancalendar.datasource.model.HolidayType.DAY_OFF
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -24,7 +24,7 @@ internal class CommaSeparatedListConverterTest {
      */
     @Test
     fun shouldSplitString() {
-        assertEquals(listOf(Day(1, HOLIDAY), Day(2, HolidayType.SHORT)),
+        assertEquals(listOf(Day(1, DAY_OFF), Day(2, HolidayType.SHORT)),
                 converter.convert("1,2*"))
     }
 
