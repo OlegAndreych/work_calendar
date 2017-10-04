@@ -1,6 +1,7 @@
 package org.andreych.russiancalendar.restservice
 
 import org.andreych.russiancalendar.storage.CalendarStorage
+import org.springframework.context.annotation.DependsOn
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
+@DependsOn("calendarDataUpdater")
 class RestController(private val calendarStorage: CalendarStorage) {
 
     companion object {
