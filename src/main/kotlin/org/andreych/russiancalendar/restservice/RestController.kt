@@ -20,6 +20,7 @@ class RestController(private val calendarStorage: CalendarStorage) {
         headers.add("Pragma", "no-cache")
         headers.add("Expires", "0")
         headers.add("Content-Encoding", "gzip")
+        headers.add("Content-Disposition", "attachment; filename=\"calendar.ics\"")
 
         val bytes = calendarStorage.getBytes()
 
