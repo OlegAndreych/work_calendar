@@ -7,8 +7,8 @@
     <bytecodeTargetLevel>
       <module name="russian-calendar_main" target="1.8" />
       <module name="russian-calendar_test" target="1.8" />
-      <module name="work-calendar_main" target="1.8" />
-      <module name="work-calendar_test" target="1.8" />
+      <module name="work-calendar_main" target="1.9" />
+      <module name="work-calendar_test" target="1.9" />
     </bytecodeTargetLevel>
   </component>
 </project>

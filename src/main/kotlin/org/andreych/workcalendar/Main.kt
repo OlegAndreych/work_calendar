@@ -33,7 +33,6 @@ class Main {
 }
 
 fun main(args: Array<String>) {
-    
     val springApplication = SpringApplication(Main::class.java)
     springApplication.run()
 }

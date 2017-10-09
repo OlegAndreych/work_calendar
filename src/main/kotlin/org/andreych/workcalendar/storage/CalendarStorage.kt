@@ -26,6 +26,7 @@ class CalendarStorage {
     }
 
     fun getBytes(): Array<Byte>? {
+
         return this.calendar
     }
 }
