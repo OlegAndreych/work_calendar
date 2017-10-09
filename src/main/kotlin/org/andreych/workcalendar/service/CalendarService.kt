@@ -7,7 +7,12 @@ import org.springframework.stereotype.Service
 @Service
 class CalendarService(private val calendarStorage: CalendarStorage, private val calendarDataUpdater: CalendarDataUpdater) {
 
-    fun getCalendarBytes() {
-
+    fun getCalendarBytes(): Array<Byte>? {
+        val bytes = calendarStorage.getBytes()
+        if (bytes == null) {
+            calendarDataUpdater.update()
+            return calendarStorage.getBytes()
+        }
+        return bytes
     }
 }

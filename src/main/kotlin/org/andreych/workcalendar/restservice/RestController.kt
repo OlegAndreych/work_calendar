@@ -1,6 +1,6 @@
 package org.andreych.workcalendar.restservice
 
-import org.andreych.workcalendar.storage.CalendarStorage
+import org.andreych.workcalendar.service.CalendarService
 import org.springframework.context.annotation.DependsOn
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.http.HttpHeaders
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @DependsOn("calendarDataUpdater")
-class RestController(private val calendarStorage: CalendarStorage) {
+class RestController(private val calendarService: CalendarService) {
 
     companion object {
         private val headers = HttpHeaders()
@@ -28,7 +28,7 @@ class RestController(private val calendarStorage: CalendarStorage) {
 
     @GetMapping("/")
     fun workCalendar(): ResponseEntity<ByteArrayResource> {
-        val bytes = calendarStorage.getBytes()
+        val bytes = calendarService.getCalendarBytes()
 
         return if (bytes != null) {
             ResponseEntity
