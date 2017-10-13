@@ -3,12 +3,15 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="work-calendar" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="russian-calendar_main" target="1.8" />
-      <module name="russian-calendar_test" target="1.8" />
-      <module name="work-calendar_main" target="1.9" />
-      <module name="work-calendar_test" target="1.9" />
+      <module name="work-calendar" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>

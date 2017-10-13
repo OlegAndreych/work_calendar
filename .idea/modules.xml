@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/work-calendar.iml" filepath="$PROJECT_DIR$/.idea/modules/work-calendar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/work-calendar_main.iml" filepath="$PROJECT_DIR$/.idea/modules/work-calendar_main.iml" group="work-calendar" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/work-calendar_test.iml" filepath="$PROJECT_DIR$/.idea/modules/work-calendar_test.iml" group="work-calendar" />
     </modules>
   </component>
 </project>

@@ -6,6 +6,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.getForObject
 
 @Component
 @ConfigurationProperties("open.data")
@@ -18,7 +19,6 @@ class CalendarDatasource(restTemplateBuilder: RestTemplateBuilder, config: Confi
 
     companion object {
         private val URL = "/dataset/7708660670-proizvcalendar/version/20151123T183036/content/?access_token={access_token}"
-        private val RESULT_TYPE = Array<YearData>::class.java
     }
 
     private val accessToken = mapOf("access_token" to config.accessToken)
@@ -28,7 +28,7 @@ class CalendarDatasource(restTemplateBuilder: RestTemplateBuilder, config: Confi
             .build()
 
     fun getData(): List<YearData> {
-        val parsedResponse = restTemplate.getForObject(URL, RESULT_TYPE, accessToken)
+        val parsedResponse: Array<YearData>? = restTemplate.getForObject(URL, accessToken)
         return parsedResponse?.asList() ?: emptyList()
     }
 }

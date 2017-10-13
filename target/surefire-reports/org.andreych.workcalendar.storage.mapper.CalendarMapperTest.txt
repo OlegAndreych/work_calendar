@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.andreych.workcalendar.storage.mapper.CalendarMapperTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.356 s - in org.andreych.workcalendar.storage.mapper.CalendarMapperTest
