@@ -1,15 +1,16 @@
-package org.andreych.workcalendar.storage.mapper
+package org.andreych.workcalendar.updater.mapper
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
 import net.fortuna.ical4j.model.Date
 import net.fortuna.ical4j.model.component.VEvent
-import org.andreych.workcalendar.datasource.model.Day
-import org.andreych.workcalendar.datasource.model.HolidayType.DAY_OFF
-import org.andreych.workcalendar.datasource.model.YearData
+import org.andreych.workcalendar.domain.Day
+import org.andreych.workcalendar.domain.EnumListMultivaluedMap
+import org.andreych.workcalendar.domain.WorkCalendarYear
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import java.time.Month
 
 internal class CalendarMapperTest {
 
@@ -19,19 +20,10 @@ internal class CalendarMapperTest {
             on { map(any(), any(), any()) } doReturn VEvent(Date(100500), "lol")
         }
 
-        val yearData = YearData(2017,
-                listOf(Day(1, DAY_OFF)),
-                emptyList(),
-                emptyList(),
-                emptyList(),
-                emptyList(),
-                emptyList(),
-                emptyList(),
-                emptyList(),
-                emptyList(),
-                emptyList(),
-                emptyList(),
-                emptyList())
+        val months = EnumListMultivaluedMap.newInstance<Month, Day>()
+        months.putAll(Month.JANUARY, listOf(Day(1)))
+
+        val yearData = WorkCalendarYear(2100, months)
 
         val data = listOf(yearData)
 

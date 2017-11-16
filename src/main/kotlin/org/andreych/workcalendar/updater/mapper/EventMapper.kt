@@ -1,10 +1,10 @@
-package org.andreych.workcalendar.storage.mapper
+package org.andreych.workcalendar.updater.mapper
 
 import net.fortuna.ical4j.model.Date
 import net.fortuna.ical4j.model.component.VEvent
 import net.fortuna.ical4j.util.UidGenerator
-import org.andreych.workcalendar.datasource.model.Day
-import org.andreych.workcalendar.datasource.model.HolidayType
+import org.andreych.workcalendar.domain.Day
+import org.andreych.workcalendar.domain.HolidayType
 import org.springframework.beans.factory.ObjectFactory
 import org.springframework.stereotype.Component
 import java.util.*

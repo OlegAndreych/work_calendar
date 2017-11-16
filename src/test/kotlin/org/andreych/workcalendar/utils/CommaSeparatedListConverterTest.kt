@@ -1,22 +1,20 @@
 package org.andreych.workcalendar.utils
 
-import org.andreych.workcalendar.datasource.model.CommaSeparatedListConverter
-import org.andreych.workcalendar.datasource.model.Day
-import org.andreych.workcalendar.datasource.model.HolidayType
-import org.andreych.workcalendar.datasource.model.HolidayType.DAY_OFF
+import org.andreych.workcalendar.datasource.model.DaysString
+import org.andreych.workcalendar.datasource.utils.convert
+import org.andreych.workcalendar.domain.Day
+import org.andreych.workcalendar.domain.HolidayType
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 internal class CommaSeparatedListConverterTest {
-
-    private val converter: CommaSeparatedListConverter = CommaSeparatedListConverter.INSTANCE
 
     /**
      * В отсутвтие строки возвращается пустой список.
      */
     @Test
     fun shouldReturnEmptyListOnNull() {
-        assertEquals(emptyList<String>(), converter.convert(null))
+        assertEquals(emptyList<String>(), (null as DaysString?).convert())
     }
 
     /**
@@ -24,8 +22,8 @@ internal class CommaSeparatedListConverterTest {
      */
     @Test
     fun shouldSplitString() {
-        assertEquals(listOf(Day(1, DAY_OFF), Day(2, HolidayType.SHORT)),
-                converter.convert("1,2*"))
+        assertEquals(listOf(Day(1), Day(2, HolidayType.SHORT)),
+                "1,2*".convert())
     }
 
     /**
@@ -33,7 +31,7 @@ internal class CommaSeparatedListConverterTest {
      */
     @Test
     fun shouldProcessSingleElementString() {
-        assertEquals(listOf(Day(1)), converter.convert("1"))
+        assertEquals(listOf(Day(1)), "1".convert())
     }
 
     /**
@@ -41,7 +39,7 @@ internal class CommaSeparatedListConverterTest {
      */
     @Test
     fun shouldProcessEmptyString() {
-        assertEquals(emptyList<String>(), converter.convert(""))
+        assertEquals(emptyList<String>(), "".convert())
     }
 
     /**
@@ -49,6 +47,6 @@ internal class CommaSeparatedListConverterTest {
      */
     @Test
     fun shouldProcessWhitespaceString() {
-        assertEquals(listOf(Day(1), Day(2)), converter.convert(",1, ,,2,\t,"))
+        assertEquals(listOf(Day(1), Day(2)), ",1, ,,2,\t,".convert())
     }
 }

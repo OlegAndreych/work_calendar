@@ -1,11 +1,10 @@
-package org.andreych.workcalendar.storage.mapper
+package org.andreych.workcalendar.updater.mapper
 
 import com.nhaarman.mockito_kotlin.doAnswer
 import com.nhaarman.mockito_kotlin.mock
 import net.fortuna.ical4j.util.UidGenerator
-import org.andreych.workcalendar.datasource.model.Day
-import org.andreych.workcalendar.datasource.model.HolidayType
-import org.andreych.workcalendar.datasource.model.HolidayType.DAY_OFF
+import org.andreych.workcalendar.domain.Day
+import org.andreych.workcalendar.domain.HolidayType
 import org.andreych.workcalendar.utils.PidProvider
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -17,7 +16,7 @@ class EventMapperTest {
 
     @Test
     fun shouldMapDayOff() {
-        val holidayType = DAY_OFF
+        val holidayType = HolidayType.DAY_OFF
         shouldMapEvent(holidayType)
     }
 

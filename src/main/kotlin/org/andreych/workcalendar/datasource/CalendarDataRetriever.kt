@@ -15,10 +15,10 @@ class Configuration {
 }
 
 @Service
-class CalendarDatasource(restTemplateBuilder: RestTemplateBuilder, config: Configuration) {
+class CalendarDataRetriever(restTemplateBuilder: RestTemplateBuilder, config: Configuration) {
 
     companion object {
-        private val URL = "/dataset/7708660670-proizvcalendar/version/20151123T183036/content/?access_token={access_token}"
+        private val URL_TEMPLATE = "/dataset/7708660670-proizvcalendar/version/20151123T183036/content/?access_token={access_token}"
     }
 
     private val accessToken = mapOf("access_token" to config.accessToken)
@@ -28,7 +28,7 @@ class CalendarDatasource(restTemplateBuilder: RestTemplateBuilder, config: Confi
             .build()
 
     fun getData(): List<YearData> {
-        val parsedResponse: Array<YearData>? = restTemplate.getForObject(URL, accessToken)
+        val parsedResponse: Array<YearData>? = restTemplate.getForObject(URL_TEMPLATE, accessToken)
         return parsedResponse?.asList() ?: emptyList()
     }
 }

@@ -2,27 +2,21 @@ package org.andreych.workcalendar.datasource.model
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+
+typealias DaysString = String
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class YearData(@JsonProperty("Год/Месяц") val year: Int,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Январь") val jan: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Февраль") val feb: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Март") val mar: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Апрель") val apr: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Май") val may: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Июнь") val jun: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Июль") val jul: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Август") val aug: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Сентябрь") val sep: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Октябрь") val oct: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Ноябрь") val nov: List<Day>,
-                    @JsonDeserialize(converter = CommaSeparatedListConverter::class) @JsonProperty("Декабрь") val dec: List<Day>
+                    @JsonProperty("Январь") val jan: DaysString,
+                    @JsonProperty("Февраль") val feb: DaysString,
+                    @JsonProperty("Март") val mar: DaysString,
+                    @JsonProperty("Апрель") val apr: DaysString,
+                    @JsonProperty("Май") val may: DaysString,
+                    @JsonProperty("Июнь") val jun: DaysString,
+                    @JsonProperty("Июль") val jul: DaysString,
+                    @JsonProperty("Август") val aug: DaysString,
+                    @JsonProperty("Сентябрь") val sep: DaysString,
+                    @JsonProperty("Октябрь") val oct: DaysString,
+                    @JsonProperty("Ноябрь") val nov: DaysString,
+                    @JsonProperty("Декабрь") val dec: DaysString
 )
-
-data class Day(val date: Int, val holidayType: HolidayType = HolidayType.DAY_OFF)
-
-enum class HolidayType(val description: String) {
-    SHORT("Short day"),
-    DAY_OFF("Day off");
-}
