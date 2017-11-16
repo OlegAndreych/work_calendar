@@ -1,7 +1,6 @@
 package org.andreych.workcalendar.datasource
 
 import org.andreych.workcalendar.datasource.api.CalendarDatasource
-import org.andreych.workcalendar.datasource.model.DaysString
 import org.andreych.workcalendar.datasource.model.YearData
 import org.andreych.workcalendar.datasource.utils.convert
 import org.andreych.workcalendar.domain.Day
@@ -10,17 +9,11 @@ import org.andreych.workcalendar.domain.WorkCalendarYear
 import org.springframework.stereotype.Service
 import java.time.Month
 import java.time.Month.*
-import kotlin.reflect.KFunction
-
-private typealias DaysStringProducer = KFunction<DaysString>
 
 @Service
-class CalendarDataConvertingRetriever(private val dataRetriever: CalendarDataRetriever) : CalendarDatasource {
+class ConvertingCalendarDataRetriever(private val dataRetriever: CalendarDataRetriever) : CalendarDatasource {
 
-    override fun getData(): List<WorkCalendarYear> {
-        val yearDataList = dataRetriever.getData()
-        return yearDataList.map { convert(it) }
-    }
+    override fun getData(): List<WorkCalendarYear> = dataRetriever.getData().map(this::convert)
 
     private fun convert(yearData: YearData): WorkCalendarYear {
         val months: EnumListMultivaluedMap<Month, Day> = EnumListMultivaluedMap.newInstance()
