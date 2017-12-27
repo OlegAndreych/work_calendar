@@ -28,7 +28,7 @@ class RestController(private val calendarService: CalendarService) {
 
     @GetMapping("/")
     fun workCalendar(): ResponseEntity<ByteArrayResource> {
-        val bytes = calendarService.getCalendarBytes()
+        val bytes: Array<Byte>? = calendarService.getCalendarBytes()
 
         return if (bytes != null) {
             ResponseEntity
