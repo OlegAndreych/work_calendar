@@ -8,12 +8,10 @@ import net.fortuna.ical4j.model.property.ProdId
 import net.fortuna.ical4j.model.property.Version
 import org.andreych.workcalendar.domain.Day
 import org.andreych.workcalendar.domain.WorkCalendarYear
-import org.springframework.stereotype.Service
 
 /**
  * Преобразует данные о производственном календаре из портала открытых данных в iCalendar.
  */
-@Service
 class CalendarMapper(private val eventMapper: EventMapper) {
 
     /**

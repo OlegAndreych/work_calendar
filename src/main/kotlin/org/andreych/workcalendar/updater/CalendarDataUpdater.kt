@@ -6,13 +6,11 @@ import org.andreych.workcalendar.updater.mapper.CalendarMapper
 import org.apache.commons.lang3.time.DateUtils
 import org.slf4j.LoggerFactory
 import org.springframework.scheduling.annotation.Scheduled
-import org.springframework.stereotype.Service
 import javax.annotation.PostConstruct
 
 /**
  * Сервис обновления данных производственного календаря.
  */
-@Service
 class CalendarDataUpdater(private val dataRetriever: CalendarDatasource,
                           private val calendarStorage: CalendarStorage,
                           private val calendarMapper: CalendarMapper) {

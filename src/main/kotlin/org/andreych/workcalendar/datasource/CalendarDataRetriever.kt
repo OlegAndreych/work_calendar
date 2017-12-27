@@ -3,19 +3,15 @@ package org.andreych.workcalendar.datasource
 import org.andreych.workcalendar.datasource.model.YearData
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.web.client.RestTemplateBuilder
-import org.springframework.stereotype.Component
-import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.getForObject
 
-@Component
 @ConfigurationProperties("open.data")
-class Configuration {
+class RetrieverConfiguration {
     lateinit var accessToken: String
 }
 
-@Service
-class CalendarDataRetriever(restTemplateBuilder: RestTemplateBuilder, config: Configuration) {
+class CalendarDataRetriever(restTemplateBuilder: RestTemplateBuilder, config: RetrieverConfiguration) {
 
     companion object {
         private val URL_TEMPLATE = "/dataset/7708660670-proizvcalendar/version/20151123T183036/content/?access_token={access_token}"

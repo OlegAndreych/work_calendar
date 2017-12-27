@@ -6,10 +6,8 @@ import net.fortuna.ical4j.util.UidGenerator
 import org.andreych.workcalendar.domain.Day
 import org.andreych.workcalendar.domain.HolidayType
 import org.springframework.beans.factory.ObjectFactory
-import org.springframework.stereotype.Component
 import java.util.*
 
-@Component
 class EventMapper(private val uidGeneratorFactory: ObjectFactory<UidGenerator>) {
 
     fun map(year: Int, month: Int, date: Day): VEvent {

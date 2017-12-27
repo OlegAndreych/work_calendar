@@ -6,11 +6,9 @@ import org.andreych.workcalendar.datasource.utils.convert
 import org.andreych.workcalendar.domain.Day
 import org.andreych.workcalendar.domain.EnumListMultivaluedMap
 import org.andreych.workcalendar.domain.WorkCalendarYear
-import org.springframework.stereotype.Service
 import java.time.Month
 import java.time.Month.*
 
-@Service
 class ConvertingCalendarDataRetriever(private val dataRetriever: CalendarDataRetriever) : CalendarDatasource {
 
     override fun getData(): List<WorkCalendarYear> = dataRetriever.getData().map(this::convert)
