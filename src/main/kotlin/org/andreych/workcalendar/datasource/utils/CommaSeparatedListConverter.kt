@@ -23,6 +23,6 @@ private fun toDate(token: DaysString): Day {
         val date = token.removeSuffix("*").toInt()
         Day(date, HolidayType.SHORT)
     } else {
-        Day(token.toInt(), HolidayType.DAY_OFF)
+        Day(token.trim('+').toInt(), HolidayType.DAY_OFF)
     }
 }

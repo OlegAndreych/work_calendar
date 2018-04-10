@@ -2,10 +2,8 @@ package org.andreych.workcalendar
 
 import com.fasterxml.jackson.databind.Module
 import com.fasterxml.jackson.module.kotlin.KotlinModule
-import net.fortuna.ical4j.util.UidGenerator
 import org.andreych.workcalendar.datasource.conf.CalendarDatasourceConf
 import org.andreych.workcalendar.restservice.conf.RestServiceConfiguration
-import org.andreych.workcalendar.utils.PidProvider
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.SpringBootConfiguration
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
@@ -28,11 +26,6 @@ class Main {
     @Bean
     fun taskScheduler(): TaskScheduler {
         return ThreadPoolTaskScheduler()
-    }
-
-    @Bean
-    fun uidGenerator(): UidGenerator {
-        return UidGenerator(PidProvider.pid)
     }
 }
 
