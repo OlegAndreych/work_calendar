@@ -7,13 +7,11 @@ import org.andreych.workcalendar.storage.CalendarStorage
 import org.andreych.workcalendar.updater.CalendarDataUpdater
 import org.andreych.workcalendar.updater.mapper.CalendarMapper
 import org.andreych.workcalendar.updater.mapper.EventMapper
-import org.andreych.workcalendar.utils.PidProvider
 import org.springframework.beans.factory.ObjectFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-//@Import(CalendarDatasourceConf::class, CalendarStorageConf::class)
 class CalendarDataUpdaterConf {
     @Bean
     fun calendarDataUpdater(dataRetriever: CalendarDatasource, calendarStorage: CalendarStorage, calendarMapper: CalendarMapper): CalendarDataUpdater = CalendarDataUpdater(dataRetriever,

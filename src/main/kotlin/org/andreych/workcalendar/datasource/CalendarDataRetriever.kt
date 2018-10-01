@@ -14,7 +14,7 @@ class RetrieverConfiguration {
 class CalendarDataRetriever(restTemplateBuilder: RestTemplateBuilder, config: RetrieverConfiguration) {
 
     companion object {
-        private val URL_TEMPLATE = "/dataset/7708660670-proizvcalendar/version/20151123T183036/content/?access_token={access_token}"
+        private const val URL_TEMPLATE = "/dataset/7708660670-proizvcalendar/version/20151123T183036/content/?access_token={access_token}"
     }
 
     private val accessToken = mapOf("access_token" to config.accessToken)
