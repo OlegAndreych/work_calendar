@@ -6,7 +6,6 @@ import net.fortuna.ical4j.util.RandomUidGenerator
 import net.fortuna.ical4j.util.UidGenerator
 import org.andreych.workcalendar.domain.Day
 import org.andreych.workcalendar.domain.HolidayType
-import org.andreych.workcalendar.utils.PidProvider
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.springframework.beans.factory.ObjectProvider

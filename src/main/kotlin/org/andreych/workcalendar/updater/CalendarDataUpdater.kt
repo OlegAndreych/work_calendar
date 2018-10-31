@@ -11,9 +11,11 @@ import javax.annotation.PostConstruct
 /**
  * Сервис обновления данных производственного календаря.
  */
-class CalendarDataUpdater(private val dataRetriever: CalendarDatasource,
-                          private val calendarStorage: CalendarStorage,
-                          private val calendarMapper: CalendarMapper) {
+class CalendarDataUpdater(
+    private val dataRetriever: CalendarDatasource,
+    private val calendarStorage: CalendarStorage,
+    private val calendarMapper: CalendarMapper
+) {
 
     companion object {
         val LOG = LoggerFactory.getLogger(CalendarDataUpdater::class.java)!!

@@ -13,7 +13,8 @@ import org.springframework.context.annotation.Import
 @Import(CalendarStorageConf::class, CalendarDataUpdaterConf::class)
 class CalendarServiceConf {
     @Bean
-    fun calendarService(calendarStorage: CalendarStorage,
-                        calendarDataUpdater: CalendarDataUpdater): CalendarService
-            = CalendarService(calendarStorage, calendarDataUpdater)
+    fun calendarService(
+        calendarStorage: CalendarStorage,
+        calendarDataUpdater: CalendarDataUpdater
+    ): CalendarService = CalendarService(calendarStorage, calendarDataUpdater)
 }

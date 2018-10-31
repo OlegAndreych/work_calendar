@@ -14,8 +14,14 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class CalendarDataUpdaterConf {
     @Bean
-    fun calendarDataUpdater(dataRetriever: CalendarDatasource, calendarStorage: CalendarStorage, calendarMapper: CalendarMapper): CalendarDataUpdater = CalendarDataUpdater(dataRetriever,
-            calendarStorage, calendarMapper)
+    fun calendarDataUpdater(
+        dataRetriever: CalendarDatasource,
+        calendarStorage: CalendarStorage,
+        calendarMapper: CalendarMapper
+    ): CalendarDataUpdater = CalendarDataUpdater(
+        dataRetriever,
+        calendarStorage, calendarMapper
+    )
 
     @Bean
     fun uidGenerator(): UidGenerator {

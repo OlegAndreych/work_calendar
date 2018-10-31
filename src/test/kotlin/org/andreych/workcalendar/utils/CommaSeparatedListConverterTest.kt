@@ -22,8 +22,10 @@ internal class CommaSeparatedListConverterTest {
      */
     @Test
     fun shouldSplitString() {
-        assertEquals(listOf(Day(1), Day(2, HolidayType.SHORT)),
-                "1,2*".convert())
+        assertEquals(
+            listOf(Day(1), Day(2, HolidayType.SHORT)),
+            "1,2*".convert()
+        )
     }
 
     /**

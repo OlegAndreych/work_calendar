@@ -14,11 +14,11 @@ class CalendarStorage {
     private var calendar: Array<Byte>? = null
 
     fun update(calendar: Calendar) {
-        val calendarBytes = ByteArrayOutputStream().use {
-            GZIPOutputStream(it).use {
-                CalendarOutputter().output(calendar, it)
+        val calendarBytes = ByteArrayOutputStream().use { baos ->
+            GZIPOutputStream(baos).use { gzos ->
+                CalendarOutputter().output(calendar, gzos)
             }
-            it.toByteArray()
+            baos.toByteArray()
         }
         this.calendar = calendarBytes.toTypedArray()
     }

@@ -32,14 +32,14 @@ class RestController(private val calendarService: CalendarService) {
 
         return if (bytes != null) {
             ResponseEntity
-                    .ok()
-                    .headers(headers)
-                    .contentType(MediaType.parseMediaType("text/calendar"))
-                    .body(ByteArrayResource(bytes.toByteArray()))
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.parseMediaType("text/calendar"))
+                .body(ByteArrayResource(bytes.toByteArray()))
         } else {
             ResponseEntity
-                    .notFound()
-                    .build()
+                .notFound()
+                .build()
         }
     }
 }

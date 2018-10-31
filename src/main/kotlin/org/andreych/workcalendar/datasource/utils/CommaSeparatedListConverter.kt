@@ -12,10 +12,10 @@ import org.andreych.workcalendar.domain.HolidayType
 fun DaysString?.convert(): List<Day> {
     if (this == null) return emptyList()
     return this
-            .split(',')
-            .filter { it.isNotBlank() }
-            .map { it.trim() }
-            .map { toDate(it) }
+        .split(',')
+        .filter { it.isNotBlank() }
+        .map { it.trim() }
+        .map { toDate(it) }
 }
 
 private fun toDate(token: DaysString): Day {

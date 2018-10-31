@@ -31,7 +31,7 @@ class CalendarMapper(private val eventMapper: EventMapper) {
 
         calendarData.forEach { date ->
             date.months.entries()
-                    .forEach { (k, v) -> addToCalendar(date.year, k.ordinal, v, components) }
+                .forEach { (k, v) -> addToCalendar(date.year, k.ordinal, v, components) }
         }
 
         return calendar
