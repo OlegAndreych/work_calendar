@@ -1,6 +1,10 @@
 package org.andreych.workcalendar.restservice
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.andreych.workcalendar.service.CalendarService
+import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.DependsOn
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.http.HttpHeaders
@@ -8,6 +12,7 @@ import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.context.request.async.DeferredResult
 
 
 @RestController
@@ -15,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController
 class RestController(private val calendarService: CalendarService) {
 
     companion object {
+        private val LOG = LoggerFactory.getLogger(RestController::class.java)
+
         private val headers = HttpHeaders()
 
         init {
@@ -27,19 +34,25 @@ class RestController(private val calendarService: CalendarService) {
     }
 
     @GetMapping("/")
-    fun workCalendar(): ResponseEntity<ByteArrayResource> {
-        val bytes: Array<Byte>? = calendarService.getCalendarBytes()
+    fun workCalendar(): DeferredResult<ResponseEntity<ByteArrayResource>> {
+        val deferredResult = DeferredResult<ResponseEntity<ByteArrayResource>>()
+        CoroutineScope(Dispatchers.Default).launch {
+            val bytes: Array<Byte>? = calendarService.getCalendarBytes()
 
-        return if (bytes != null) {
-            ResponseEntity
-                .ok()
-                .headers(headers)
-                .contentType(MediaType.parseMediaType("text/calendar"))
-                .body(ByteArrayResource(bytes.toByteArray()))
-        } else {
-            ResponseEntity
-                .notFound()
-                .build()
+            val responseEntity = if (bytes != null) {
+                ResponseEntity
+                        .ok()
+                        .headers(headers)
+                        .contentType(MediaType.parseMediaType("text/calendar"))
+                        .body(ByteArrayResource(bytes.toByteArray()))
+            } else {
+                ResponseEntity
+                        .notFound()
+                        .build()
+            }
+
+            deferredResult.setResult(responseEntity)
         }
+        return deferredResult
     }
 }

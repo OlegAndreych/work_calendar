@@ -1,5 +1,7 @@
 package org.andreych.workcalendar.datasource
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.andreych.workcalendar.datasource.api.CalendarDatasource
 import org.andreych.workcalendar.datasource.model.YearData
 import org.andreych.workcalendar.datasource.utils.convert
@@ -11,7 +13,11 @@ import java.time.Month.*
 
 class ConvertingCalendarDataRetriever(private val dataRetriever: CalendarDataRetriever) : CalendarDatasource {
 
-    override fun getData(): List<WorkCalendarYear> = dataRetriever.getData().map(this::convert)
+    override suspend fun getData(): List<WorkCalendarYear> {
+        return withContext(Dispatchers.Default) {
+            dataRetriever.getData().map(this@ConvertingCalendarDataRetriever::convert)
+        }
+    }
 
     private fun convert(yearData: YearData): WorkCalendarYear {
         val months: EnumListMultivaluedMap<Month, Day> = EnumListMultivaluedMap.newInstance()
