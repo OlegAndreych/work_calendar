@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.Module
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import org.andreych.workcalendar.datasource.conf.CalendarDatasourceConf
 import org.andreych.workcalendar.restservice.conf.RestServiceConfiguration
+import org.andreych.workcalendar.updater.conf.CalendarDataUpdaterConf
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.SpringBootConfiguration
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
@@ -16,7 +17,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler
 @EnableScheduling
 @SpringBootConfiguration
 @EnableAutoConfiguration
-@Import(CalendarDatasourceConf::class, RestServiceConfiguration::class)
+@Import(CalendarDatasourceConf::class, RestServiceConfiguration::class, CalendarDataUpdaterConf::class)
 class Main {
     @Bean
     fun jacksonKotlinModule(): Module {
