@@ -6,7 +6,6 @@ import kotlinx.coroutines.launch
 import org.andreych.workcalendar.datasource.api.CalendarDatasource
 import org.andreych.workcalendar.storage.CalendarStorage
 import org.andreych.workcalendar.updater.mapper.CalendarMapper
-import org.apache.commons.lang3.time.DateUtils
 import org.slf4j.LoggerFactory
 import org.springframework.scheduling.annotation.Scheduled
 
@@ -23,7 +22,7 @@ class CalendarDataUpdater(
         val LOG = LoggerFactory.getLogger(CalendarDataUpdater::class.java)!!
     }
 
-    @Scheduled(fixedRate = DateUtils.MILLIS_PER_DAY)
+    @Scheduled(fixedRate = 24 * 60 * 60 * 1000)
     fun update() {
         LOG.info("Launching scheduled update!")
         CoroutineScope(Dispatchers.Default).launch {

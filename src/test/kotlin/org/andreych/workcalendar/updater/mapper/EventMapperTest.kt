@@ -1,7 +1,7 @@
 package org.andreych.workcalendar.updater.mapper
 
-import com.nhaarman.mockito_kotlin.doAnswer
-import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockitokotlin2.doAnswer
+import com.nhaarman.mockitokotlin2.mock
 import net.fortuna.ical4j.util.RandomUidGenerator
 import net.fortuna.ical4j.util.UidGenerator
 import org.andreych.workcalendar.domain.Day
@@ -13,7 +13,7 @@ import java.util.*
 import java.util.Calendar.JANUARY
 
 class EventMapperTest {
-
+ 
     @Test
     fun shouldMapDayOff() {
         val holidayType = HolidayType.DAY_OFF

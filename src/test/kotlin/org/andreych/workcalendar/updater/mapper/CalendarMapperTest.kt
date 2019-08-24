@@ -1,8 +1,8 @@
 package org.andreych.workcalendar.updater.mapper
 
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.doReturn
-import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.mock
 import net.fortuna.ical4j.model.Date
 import net.fortuna.ical4j.model.component.VEvent
 import org.andreych.workcalendar.domain.Day
