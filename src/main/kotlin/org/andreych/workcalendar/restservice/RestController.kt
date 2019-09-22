@@ -4,7 +4,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.andreych.workcalendar.service.CalendarService
-import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.DependsOn
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.http.HttpHeaders
@@ -20,8 +19,6 @@ import org.springframework.web.context.request.async.DeferredResult
 class RestController(private val calendarService: CalendarService) {
 
     companion object {
-        private val LOG = LoggerFactory.getLogger(RestController::class.java)
-
         private val headers = HttpHeaders()
 
         init {

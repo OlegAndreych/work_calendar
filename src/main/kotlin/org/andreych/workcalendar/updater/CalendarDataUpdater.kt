@@ -22,7 +22,7 @@ class CalendarDataUpdater(
         val LOG = LoggerFactory.getLogger(CalendarDataUpdater::class.java)!!
     }
 
-    @Scheduled(fixedRate = 24 * 60 * 60 * 1000)
+    @Scheduled(fixedRate = 15 * 60 * 1000)
     fun update() {
         LOG.info("Launching scheduled update!")
         CoroutineScope(Dispatchers.Default).launch {
