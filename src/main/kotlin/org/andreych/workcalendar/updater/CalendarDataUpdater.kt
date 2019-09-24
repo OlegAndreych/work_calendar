@@ -22,10 +22,12 @@ class CalendarDataUpdater(
         val LOG = LoggerFactory.getLogger(CalendarDataUpdater::class.java)!!
     }
 
+    private val scope = CoroutineScope(Dispatchers.Default)
+
     @Scheduled(fixedRate = 15 * 60 * 1000, initialDelay = 0)
     fun update() {
         LOG.info("Launching scheduled update!")
-        CoroutineScope(Dispatchers.Default).launch {
+        scope.launch {
             LOG.info("Updating calendar data.")
             val data = dataRetriever.getData()
             val calendar = calendarMapper.map(data)

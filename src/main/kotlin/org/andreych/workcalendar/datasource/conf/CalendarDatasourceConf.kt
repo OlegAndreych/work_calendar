@@ -12,14 +12,13 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 @EnableConfigurationProperties(RetrieverConfiguration::class)
 class CalendarDatasourceConf {
-
     @Bean
     fun calendarDataRetriever(
-        restTemplateBuilder: RestTemplateBuilder,
-        config: RetrieverConfiguration
+            restTemplateBuilder: RestTemplateBuilder,
+            config: RetrieverConfiguration
     ): CalendarDataRetriever = CalendarDataRetriever(restTemplateBuilder, config)
 
     @Bean
     fun calendarDataSource(dataRetriever: CalendarDataRetriever): CalendarDatasource =
-        ConvertingCalendarDataRetriever(dataRetriever)
+            ConvertingCalendarDataRetriever(dataRetriever)
 }

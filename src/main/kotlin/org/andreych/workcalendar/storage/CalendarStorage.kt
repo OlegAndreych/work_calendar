@@ -6,11 +6,12 @@ import net.fortuna.ical4j.data.CalendarOutputter
 import net.fortuna.ical4j.model.Calendar
 import java.io.ByteArrayOutputStream
 import java.util.zip.GZIPOutputStream
+import javax.sql.DataSource
 
 /**
  * Хранит актуальные данные iCalendar.
  */
-class CalendarStorage {
+class CalendarStorage(dataSource: DataSource) {
 
     @Volatile
     private var calendar: Array<Byte>? = null

@@ -31,7 +31,7 @@ class CalendarDataRetriever(restTemplateBuilder: RestTemplateBuilder, config: Re
 
     suspend fun getData(): List<YearData> {
         val deferred = withContext(Dispatchers.IO) {
-            async {
+            return@withContext async {
                 LOG.info("Fetching calendar data from government service.")
                 val parsedResponse: Array<YearData>? = restTemplate.getForObject(URL_TEMPLATE, accessToken)
                 return@async parsedResponse?.asList() ?: emptyList()
