@@ -34,8 +34,7 @@ class CalendarDataRetriever(restTemplateBuilder: RestTemplateBuilder, config: Re
             async {
                 LOG.info("Fetching calendar data from government service.")
                 val parsedResponse: Array<YearData>? = restTemplate.getForObject(URL_TEMPLATE, accessToken)
-                val list = parsedResponse?.asList() ?: emptyList()
-                list
+                return@async parsedResponse?.asList() ?: emptyList()
             }
         }
         val result = deferred.await()
