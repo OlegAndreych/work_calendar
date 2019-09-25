@@ -13,8 +13,10 @@ services:
       - /tmp/pg:/var/lib/postgresql/data
   workcalendar:
     image: workcalendar:latest
-    container_name: parser
+    container_name: workcalendar
     restart: "no"
+    ports:
+      - 8080:8080
     env_file:
       - ../workcalendar.env
     depends_on:

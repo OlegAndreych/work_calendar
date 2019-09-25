@@ -1,3 +1,3 @@
 #!/bin/sh
 BASEDIR=$(dirname "$0")
-docker-compose -f "$BASEDIR/docker/compose.yml" run --rm workcalendar
+docker-compose -f "$BASEDIR/docker/compose.yml" up -d
