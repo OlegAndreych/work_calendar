@@ -1,8 +1,9 @@
 import org.gradle.api.JavaVersion.VERSION_11
+import javax.naming.spi.NamingManager
 
 plugins {
     application
-    kotlin("jvm") version "1.3.10"
+    kotlin("jvm") version "1.3.50"
     id("org.springframework.boot").version("2.1.8.RELEASE")
     id("org.jetbrains.kotlin.plugin.spring").version("1.3.50")
 }

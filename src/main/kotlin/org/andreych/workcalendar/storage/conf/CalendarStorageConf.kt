@@ -15,7 +15,7 @@ import javax.sql.DataSource
 class CalendarStorageConf {
     @Bean
     fun calendarStorage(dataSource: DataSource): CalendarStorage = CalendarStorage(dataSource)
-    
+
     @Bean
     fun dataSource(configuration: StorageConfiguration): DataSource {
         val pgDataSource = PGSimpleDataSource()

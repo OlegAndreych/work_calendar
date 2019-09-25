@@ -1,0 +1,21 @@
+version: "3.6"
+
+services:
+  db:
+    image: postgres:11
+    container_name: postgres
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    env_file:
+      - ../workcalendar.env
+    volumes:
+      - /tmp/pg:/var/lib/postgresql/data
+  workcalendar:
+    image: workcalendar:latest
+    container_name: parser
+    restart: "no"
+    env_file:
+      - ../workcalendar.env
+    depends_on:
+      - db
