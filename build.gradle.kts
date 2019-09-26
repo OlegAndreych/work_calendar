@@ -1,5 +1,4 @@
 import org.gradle.api.JavaVersion.VERSION_11
-import javax.naming.spi.NamingManager
 
 plugins {
     application
@@ -39,7 +38,9 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-reflect:1.3.50")
     compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.10.0.pr3")
     compile("org.mnode.ical4j:ical4j:3.0.10")
+
     compile("org.springframework.boot:spring-boot-devtools:2.1.8.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-jdbc:2.1.8.RELEASE")
     compile("org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE") {
         exclude("spring-boot-starter-tomcat")
     }

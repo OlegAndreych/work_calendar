@@ -30,8 +30,8 @@ class CalendarDataUpdater(
         scope.launch {
             LOG.info("Updating calendar data.")
             val data = dataRetriever.getData()
-            val calendar = calendarMapper.map(data)
-            calendarStorage.update(calendar)
+            val calendar = calendarMapper.map(data.second)
+            calendarStorage.update(Pair(data.first, calendar))
             LOG.info("Calendar data has been updated.")
         }
     }

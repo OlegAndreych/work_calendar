@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.DependsOn
+import org.springframework.jdbc.core.JdbcTemplate
 import javax.sql.DataSource
 
 @Configuration
@@ -17,7 +18,7 @@ import javax.sql.DataSource
 class CalendarStorageConf {
     @Bean
     @DependsOn(value = ["migrator"])
-    fun calendarStorage(dataSource: DataSource): CalendarStorage = CalendarStorage(dataSource)
+    fun calendarStorage(jdbcTemplate: JdbcTemplate): CalendarStorage = CalendarStorage(jdbcTemplate)
 
     @Bean
     fun dataSource(configuration: StorageConfiguration): DataSource {

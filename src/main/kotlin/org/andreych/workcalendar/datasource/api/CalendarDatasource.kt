@@ -9,5 +9,5 @@ interface CalendarDatasource {
     /**
      * Получение данных для производственного календаря.
      */
-    suspend fun getData(): Collection<WorkCalendarYear>
+    suspend fun getData(): Pair<String?, List<WorkCalendarYear>>
 }

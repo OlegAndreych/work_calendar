@@ -13,9 +13,11 @@ import java.time.Month.*
 
 class ConvertingCalendarDataRetriever(private val dataRetriever: CalendarDataRetriever) : CalendarDatasource {
 
-    override suspend fun getData(): List<WorkCalendarYear> {
+    override suspend fun getData(): Pair<String?, List<WorkCalendarYear>> {
         return withContext(Dispatchers.Default) {
-            dataRetriever.getData().map(this@ConvertingCalendarDataRetriever::convert)
+            val data = dataRetriever.getData()
+            val mappedCalendar = data.second.map(this@ConvertingCalendarDataRetriever::convert)
+            Pair(data.first, mappedCalendar)
         }
     }
 

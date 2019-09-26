@@ -1,5 +1,6 @@
 package org.andreych.workcalendar.datasource
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
@@ -15,7 +16,10 @@ class RetrieverConfiguration {
     lateinit var accessToken: String
 }
 
-class CalendarDataRetriever(restTemplateBuilder: RestTemplateBuilder, config: RetrieverConfiguration) {
+class CalendarDataRetriever(
+        restTemplateBuilder: RestTemplateBuilder,
+        config: RetrieverConfiguration,
+        private val objectMapper: ObjectMapper) {
 
     companion object {
         private const val URL_TEMPLATE =
@@ -29,12 +33,13 @@ class CalendarDataRetriever(restTemplateBuilder: RestTemplateBuilder, config: Re
             .rootUri("http://data.gov.ru/api")
             .build()
 
-    suspend fun getData(): List<YearData> {
+    suspend fun getData(): Pair<String?, List<YearData>> {
         val deferred = withContext(Dispatchers.IO) {
             return@withContext async {
                 LOG.info("Fetching calendar data from government service.")
-                val parsedResponse: Array<YearData>? = restTemplate.getForObject(URL_TEMPLATE, accessToken)
-                return@async parsedResponse?.asList() ?: emptyList()
+                val response: String? = restTemplate.getForObject(URL_TEMPLATE, accessToken)
+                val parsedResponse: Array<YearData>? = objectMapper.readValue(response, Array<YearData>::class.java)
+                return@async Pair(response, parsedResponse?.asList() ?: emptyList())
             }
         }
         val result = deferred.await()

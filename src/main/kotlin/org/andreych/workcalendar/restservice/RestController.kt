@@ -34,14 +34,14 @@ class RestController(private val calendarService: CalendarService) {
     fun workCalendar(): DeferredResult<ResponseEntity<ByteArrayResource>> {
         val deferredResult = DeferredResult<ResponseEntity<ByteArrayResource>>()
         CoroutineScope(Dispatchers.Default).launch {
-            val bytes: Array<Byte>? = calendarService.getCalendarBytes()
+            val bytes: ByteArray? = calendarService.getCalendarBytes()
 
             val responseEntity = if (bytes != null) {
                 ResponseEntity
                         .ok()
                         .headers(headers)
                         .contentType(MediaType.parseMediaType("text/calendar"))
-                        .body(ByteArrayResource(bytes.toByteArray()))
+                        .body(ByteArrayResource(bytes))
             } else {
                 ResponseEntity
                         .notFound()

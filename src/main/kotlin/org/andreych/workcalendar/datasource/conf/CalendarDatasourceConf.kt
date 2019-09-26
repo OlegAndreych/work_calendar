@@ -1,5 +1,6 @@
 package org.andreych.workcalendar.datasource.conf
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.andreych.workcalendar.datasource.CalendarDataRetriever
 import org.andreych.workcalendar.datasource.ConvertingCalendarDataRetriever
 import org.andreych.workcalendar.datasource.RetrieverConfiguration
@@ -15,8 +16,9 @@ class CalendarDatasourceConf {
     @Bean
     fun calendarDataRetriever(
             restTemplateBuilder: RestTemplateBuilder,
-            config: RetrieverConfiguration
-    ): CalendarDataRetriever = CalendarDataRetriever(restTemplateBuilder, config)
+            config: RetrieverConfiguration,
+            objectMapper: ObjectMapper
+    ): CalendarDataRetriever = CalendarDataRetriever(restTemplateBuilder, config, objectMapper)
 
     @Bean
     fun calendarDataSource(dataRetriever: CalendarDataRetriever): CalendarDatasource =
