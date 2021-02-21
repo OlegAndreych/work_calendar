@@ -25,10 +25,8 @@ internal class CalendarMapperTest {
 
         val yearData = WorkCalendarYear(2100, months)
 
-        val data = listOf(yearData)
-
         val mapper = CalendarMapper(eventMapper)
-        val calendar = mapper.map(data)
+        val calendar = mapper.map(yearData)
 
         assertEquals("Unexpected amount of events", 1, calendar.components.size)
     }

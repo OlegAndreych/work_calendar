@@ -19,7 +19,7 @@ class CalendarMapper(private val eventMapper: EventMapper) {
      *
      * @param calendarData данные календаря с портала.
      */
-    fun map(calendarData: Collection<WorkCalendarYear>): Calendar {
+    fun map(calendarData: WorkCalendarYear): Calendar {
         val calendar = Calendar()
 
         val properties = calendar.properties
@@ -29,10 +29,9 @@ class CalendarMapper(private val eventMapper: EventMapper) {
 
         val components = calendar.components
 
-        calendarData.forEach { date ->
-            date.months.entries()
-                .forEach { (k, v) -> addToCalendar(date.year, k.ordinal, v, components) }
-        }
+        calendarData.months.entries()
+            .forEach { (k, v) -> addToCalendar(calendarData.year, k.ordinal, v, components) }
+
 
         return calendar
     }
